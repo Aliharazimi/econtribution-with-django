@@ -1,0 +1,121 @@
+{% extends 'users/base.html' %}
+{% load static %}
+{% block content %} 
+<div class="container bootstrap snippets bootdey">
+        <div class="row">
+            <div class="profile-nav col-md-3">
+                <div class="panel">
+                    <div class="user-heading round" style="background-color: rgb(13, 82, 87);">
+                        <a href="#">
+                            <img src="{{ cuser.profile.image.url }}" alt="">
+                        </a>
+                        <h1>{{ cuser.username }}</h1>
+                        <p>{{ cuser.profile.phone_number }}</p>
+                        <p>{{ cuser.email }}</p>
+                    </div>
+                </div>
+
+                <div class="table-responsive" style="height: 400px;">
+                    <table class="table" >
+                        <caption>List of withdrawals</caption>
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">withdrawals</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Account Name</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for withdrawal in withdrawals %}
+                          <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ withdrawal.status }}</td>
+                            <td>NG {{ withdrawal.amount }}</td>
+                            <td>{{ withdrawal.account_name }}</td>
+                          </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                  </div>
+                  
+            </div>
+            <div class="profile-info col-md-9">
+                <div class="panel">
+                    <ul class="nav nav-pills">
+                        <li>
+                            <a href="#"><i class="fa fa-map-marker"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-camera"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class=" fa fa-film"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-microphone"></i></a>
+                        </li>
+                    </ul>
+                    </footer>
+                </div>
+                <div class="panel">
+                    <div class="panel-body bio-graph-info">
+                        <h1>{{ cont.title }}</h1>
+                        <div class="row">
+                            <div class="bio-row">
+                                <p>{{ cont.description }}</p>
+                            </div>
+                            <div class="bio-row">
+                                <p><span>category </span>: {{ cont.get_category_display }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="bio-desk">
+                                    <h4 class="red">Amount Needed</h4>
+                                    <p>NG {{ cont.amount_needed }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="bio-desk">
+                                    <h4 class="red">Amount Contributed</h4>
+                                    <p>NG {{ cont.amount_contributed }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <form action="" method="POST">
+                        <div class="panel-body bio-graph-info">
+                            <h1>Withdraw Now</h1>
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="bio-row">
+                                    <p><span>Account Name </span>: {{ cform.account_number }} </p>
+                                </div>
+                                <div class="bio-row">
+                                    <p><span>Account Number </span>: {{ cform.account_name }}</p>
+                                </div>
+                                <div class="bio-row">
+                                    <p><span>Bank Name: </span>{{ cform.bank }}</p>
+                                </div>
+                                <div class="bio-row">
+                                    <p><span>How much do you want to withdraw? </span>: NG {{ cform.amount }}</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-success " type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+{% endblock content %}

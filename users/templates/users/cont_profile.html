@@ -1,0 +1,117 @@
+{% extends 'users/base.html' %}
+{% load static %}
+{% block content %} 
+<div class="container bootstrap snippets bootdey">
+        <div class="row">
+            <div class="profile-nav col-md-3">
+                <div class="panel">
+                    <div class="user-heading round" style="background-color: rgb(13, 82, 87);">
+                        <a href="#">
+                            <img src="{{ cuser.profile.image.url }}" alt="">
+                        </a>
+                        <h1>{{ cuser.username }}</h1>
+                        <p>{{ cuser.profile.phone_number }}</p>
+                        <p>{{ cuser.email }}</p>
+                    </div>
+                </div>
+
+                <div class="table-responsive" style="height: 400px;">
+                    <table class="table" >
+                        <caption>List of contributors</caption>
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Contributors</th>
+                            <th scope="col">Amount</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for contributor in rcontributor %}
+                          <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            {% if contributor.audiance == "PU" %}
+                            <td>{{ contributor.name }}</td>
+                            {% else %}
+                            <td>Anonymous</td>
+                            {% endif %}
+                            <td>NG {{ contributor.amount_deposited }}</td>
+                          </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                  </div>
+                  
+            </div>
+            <div class="profile-info col-md-9">
+                <div class="panel">
+                    <ul class="nav nav-pills ">
+                        {% if cuser == user %}
+                        <a class="btn btn-warning pull-right col-md-12" style="color: white;" href="{% url 'users:withdrawal' slug=cont.slug %}" style="text-decoration: none; color:  #797979;">Request for withdraw?</a>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="panel">
+                    <div class="panel-body bio-graph-info">
+                        <h1>{{ cont.title }}</h1>
+                        <div class="row">
+                            <div class="bio-row">
+                                <p>{{ cont.description }}</p>
+                            </div>
+                            <div class="bio-row">
+                                <p><span>category </span>: {{ cont.get_category_display }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="bio-desk">
+                                    <h4 class="red">Minimum Amount Needed</h4>
+                                    <p>NG {{ cont.amount_needed }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="bio-desk">
+                                    <h4 class="red">Amount Contributed</h4>
+                                    <p>NG {{ cont.amount_contributed }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="panel">
+                    <form action="" method="POST">
+                        <div class="panel-body bio-graph-info">
+                            <h1>Contribute Now</h1>
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="bio-row">
+                                    <p><span>Name </span>: {{ cform.name }} </p>
+                                </div>
+                                <div class="bio-row">
+                                    <p><span>Phone </span>: {{ cform.phone_number }}</p>
+                                </div>
+                                <div class="bio-row">
+                                    <p><span>write a short note: </span>{{ cform.short_message }}</p>
+                                </div>
+                                <div class="bio-row">
+                                    <p><span>Who do want to see your contribution? </span>: {{ cform.audiance }}</p>
+                                </div>
+                                <div class="bio-row">
+                                    <p><span>How much you want to contribute? </span>: NG {{ cform.amount_deposited }}</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-success " type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+{% endblock content %}

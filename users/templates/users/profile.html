@@ -1,0 +1,236 @@
+{% extends 'users/base.html' %}
+{% load static %}
+  {% block content %} 
+    <div class="container bootstrap snippets bootdey">
+        {% if cuser != user %}
+        <div class="row">
+            <div class="profile-nav col-md-3">
+                <div class="panel">
+                    <div class="user-heading round" style="background-color: rgb(13, 82, 87);">
+                        <a href="#">
+                            <img src="{{ cuser.profile.image.url }}" alt="">
+                        </a>
+                        <h1>{{ cuser.username }}</h1>
+                        <p>{{ cuser.profile.phone_number }}</p>
+                        <p>{{ cuser.email }}</p>
+                    </div>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li ><a href="{% url 'users:contributions' username=cuser.username %}"><i class="fa fa-calendar"></i> Contributions <span
+                                    class="label label-info pull-right r-activity">{{ contribution.count }}</span></a></li>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="profile-info col-md-9">
+                <div class="panel">
+                    <ul class="nav nav-pills">
+                        <li>
+                         <a href="#"><i class="fa fa-map-marker"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-camera"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class=" fa fa-film"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-microphone"></i></a>
+                        </li>
+                    </ul>
+                    </footer>
+                </div>
+                {% for cont in contribution %}
+                <div class="panel" style="border: 1p solid rgb(13, 82, 87);">
+                    <div class="panel-body bio-graph-info">
+                        <h1>{{ cont.title }}</h1>
+                        <div class="row">
+                            <div class="bio-row">
+                                <p>{{ cont.description }}</p>
+                            </div>
+                            <div class="bio-row">
+                                <p><span>category </span>: {{ cont.get_category_display }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="bio-desk">
+                                    <h4 class="red">Amount Needed</h4>
+                                    <p>NG {{ cont.amount_needed }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="bio-desk">
+                                    <h4 class="red">Amount Needed</h4>
+                                    <p>NG {{ cont.amount_contributed }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% elif cuser == user %}
+    <div class="row">
+        <div class="profile-nav col-md-3">
+            <div class="panel">
+                <div class="user-heading round" style="background-color: rgb(48, 122, 112);">
+                    <a href="#">
+                        <img src="{{ cuser.profile.image.url }}" alt="">
+                    </a>
+                    <h1>{{ cuser.username }}</h1>
+                    <p>{{ cuser.profile.phone_number }}</p>
+                    <p>{{ cuser.email }}</p>
+                </div>
+
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active" ><a> <i class="fa fa-user"></i> Profile</a></li>
+                    <li ><a href="{% url 'users:contributions' username=cuser.username %}"><i class="fa fa-calendar"></i> Contributions <span
+                                class="label label-info pull-right r-activity">{{ contribution.count }}</span></a></li>
+                    <li id="edit_profile"><a > <i class="fa fa-edit"></i> Edit profile</a></li>
+                    <li id="contbtn"><a> <i class="fa fa-edit"></i> Create new contribution</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="profile-info col-md-9">
+            <div class="panel">
+                <ul class="nav nav-pills">
+                    <li>
+                        <a href="#"><i class="fa fa-map-marker"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-camera"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class=" fa fa-film"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-microphone"></i></a>
+                    </li>
+                </ul>
+                </footer>
+            </div>
+            <div class="panel">
+                {% if cuser.profile.bio %}
+                <div class="bio-graph-heading"  style="background-color: rgb(48, 122, 112);">
+                    {{ cuser.profile.bio }}
+                </div>
+                {% endif %}
+                <div class="panel-body bio-graph-info">
+                    <h1>Bio Graph</h1>
+                    <div class="row">
+                        <div class="bio-row">
+                            <p><span>First Name </span>: {{ cuser.profile.first_name }}</p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span>Last Name </span>: {{ cuser.profile.last_name }}</p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span>Email </span>: {{ cuser.email }}</p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span>Phone </span>: {{ cuser.profile.phone_number }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="bio-desk">
+                                    <h4 class="red">Wallet Balance</h4>
+                                    <p>NG {{ cuser.profile.amount }}</p>
+                                    <p>{{ cuser.profile.name }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="bio-desk">
+                                    <h4 class="terques">Contributors</h4>
+                                    <p>{{ contribution.contributor }}</p>
+                                    <!-- <p>Deadline : 15 August</p> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="panel" id="contribution" style="display: none;"  >
+                    <i class="fa fa-times pull-right" id="cancel" aria-hidden="true"></i>
+                    <form action="" method="POST">
+                        <div class="panel-body bio-graph-info">
+                            <h1>Create a contribution task.</h1>
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="bio-row">
+                                    <p><span>Title </span>: {{ taskform.title }} </p>
+                                </div>
+                                
+                                <div class="bio-row">
+                                    <p><span>category </span>: {{ taskform.category }}</p>
+                                </div>
+                                <div class="bio-row">
+                                    <p><span>write a short note: </span>: {{ taskform.description }}</p>
+                                </div>
+                                <div class="bio-row">
+                                    <p><span>Minimum amount you may need on this contribution? </span>: {{ taskform.amount_needed }}</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-success pull-right " type="submit">Submit</button>
+                            <!-- <span class="btn btn-danger " id="cancel">Cancel</span> -->
+                        </div>
+                    </form>
+                </div>
+                <div class="panel" id="update_form" style="display: none;"  >
+                    <i class="fa fa-times pull-right" id="cancel_update" aria-hidden="true"></i>
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        <div class="panel-body bio-graph-info">
+                            <h1>Profile Update.</h1>
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="bio-row">
+                                    <p><span>Username </span>: {{ u_form.username }} </p>
+                                </div>
+                                <div class="bio-row">
+                                    <p><span>Email </span>: {{ u_form.email }}</p>
+                                </div>
+                                <div class="bio-row">
+                                    <p><span>First Name </span>: {{ p_form.first_name }}</p>
+                                </div>
+                                <div class="bio-row">
+                                    <p><span>Last Name </span>: {{ p_form.last_name }}</p>
+                                </div>
+                                <div class="bio-row">
+                                    <p><span>Phone Number </span>: {{ p_form.phone_number }}</p>
+                                </div>
+                                <div class="bio-row">
+                                    <p><span>Bio </span>: {{ p_form.bio }}</p>
+                                </div>
+                                <div class="bio-row">
+                                    <p><span>Profile picture </span>: {{ p_form.image }}</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-success pull-right " type="submit">Update</button>
+                            <!-- <span class="btn btn-danger " id="cancel">Cancel</span> -->
+                        </div>
+                    </form>
+                </div>
+        </div>
+        {% endif %}
+
+{% endblock content %}
+   

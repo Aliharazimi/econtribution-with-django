@@ -1,0 +1,82 @@
+{% extends 'users/base.html' %}
+{% load static %}
+{% block navbar %}
+{% include 'users/navbar.html' %}
+{% endblock navbar %}
+{% block content %} 
+    <div class="container bootstrap snippets bootdey">
+        <div class="row">
+            <div class="profile-info col-md-9">
+                {% for cont in contribution %}
+                <div class="panel">
+
+                    <div class="panel-body bio-graph-info">
+                            <h1>{{ cont.title }}</h1>
+                            <div class="row">
+                                <div class="bio-row">
+                                    <p>{{ cont.description }}</p>
+                                </div>
+                                <div class="bio-row">
+                                    <p><span>category </span>: {{ cont.get_category_display }}</p>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="bio-desk">
+                                    <h4 class="red">Minimum Amount Needed</h4>
+                                    <p>NG {{ cont.amount_needed }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="bio-desk">
+                                    <h4 class="red">Amount Contributed</h4>
+                                    <p>NG {{ cont.amount_contributed }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% if cuser == user %}
+                <a class="btn btn-info pull-right col-md-3" style="color: white;" href="{% url 'users:withdrawal' slug=cont.slug %}" style="text-decoration: none; color:  #797979;">Request withdraw</a>
+                <div class="profile-nav col-md-9">
+    
+                    <div class="table-responsive" style="height: 400px;">
+                        <table class="table" >
+                            <caption>List of contributors</caption>
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Contributors</th>
+                                <th scope="col">Amount</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {% for contributor in rcontributor %}
+                              <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                {% if contributor.audiance == "PU" %}
+                                <td>{{ contributor.name }}</td>
+                                {% else %}
+                                <td>Anonymous</td>
+                                {% endif %}
+                                <td>NG {{ contributor.amount_deposited }}</td>
+                              </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                      </div>
+                {% else %}
+                <a class="btn btn-success" style="color: white;" href="{% url 'users:cont-profile' slug=cont.slug %}" style="text-decoration: none; color:  #797979;">Do you want to contribute?</a>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+{% endblock content %}
