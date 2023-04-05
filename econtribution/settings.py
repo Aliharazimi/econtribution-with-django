@@ -81,11 +81,11 @@ WSGI_APPLICATION = 'econtribution.wsgi.application'
 DATABASES = {  
     'default': {  
         'ENGINE': 'django.db.backends.mysql',  
-        'NAME': 'wedder',  
-        'USER': 'wedme12',  
-        'PASSWORD': '982Tgvz^3',  
-        'HOST': '185.182.187.136',  
-        'PORT': '3306',  
+        'NAME': 'NAME',  
+        'USER': 'USERNAME',  
+        'PASSWORD': 'PASSWORD',  
+        'HOST': 'HOST',  
+        'PORT': 'PORT',  
         'OPTIONS': {  
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
         }  
