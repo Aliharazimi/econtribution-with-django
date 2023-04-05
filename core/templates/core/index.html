@@ -1,0 +1,451 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Preloading -->
+
+<section class="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 d-none d-xl-block">
+                <div class="banner-3-content">
+                    <h1>Best creative template for agencies</h1>
+                    <p>Lorem ipsum dummy text are usually use. Replace your text bare usuallly use in these section. So
+                        i used here. replace your text</p>
+                    <div class="bnr-btn">
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><a href="#">Contact Us</a></li>
+                            <li class="list-inline-item"><a href="#">Learn more </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 d-block d-lg-block d-sm-block d-xl-none">
+                <div class="banner-3-content">
+                    <h1>Best creative theme for agencies</h1>
+                    <p>Lorem ipsum dummy text are usually use. Replace your text bare usuallly use in these section. So
+                        i used here. replace your text</p>
+                    <div class="bnr-btn">
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><a href="#">Contact Us</a></li>
+                            <li class="list-inline-item"><a href="#">Learn more </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% if messages %}
+<div class="messages mt-5 pt-4">
+    {% for message in messages %}
+    <p{% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %}>{{ message }}</p>
+        {% endfor %}
+</div>
+{% endif %}
+<div class="space" style="height: 115px"></div>
+<section id="about_me">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 d-block d-lg-none text-center">
+                <img class="img-fluid" src="{% static 'images/img-1.png' %}" alt="">
+                <div class="space" style="height: 50px"></div>
+            </div>
+            <div class="col-sm-12 col-lg-6">
+                <div class="space d-none d-md-none d-xl-block d-sm-block" style="height: 50px"></div>
+                <div class="section-title color" style="text-align: left">
+                    <span>About Us</span>
+                    <h1>We’re motivated by your desire to achieve your goals.</h1>
+                </div>
+                <div class="space" style="height: 20px"></div>
+                <div class="elementor-text-editor">
+                    <p>We provide the of your way to contribute or recieve contribution all over the country using
+                        secured and reliable medium.</p>
+                    <ul>
+                        <li>Wired contribution digital service provider.</li>
+                        <li>Bank tranfer contribution with instance verification</li>
+                        <li>Card payment wired contribution with guarantee f secuirity.</li>
+                    </ul>
+                </div>
+                <div class="space" style="height: 30px"></div>
+                <div class="felipa-btn">
+                    <a href="#">Learn More</a>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-6 d-none d-xl-block d-lg-block">
+                <img class="img-fluid" src="{% static 'images/img-1.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<div class="space" style="height: 130px"></div>
+<section class="home-counter">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h1><span>{{ customercount.count }} + </span></h1>
+                <h3>Customers</h3>
+                <i class="fa fa-users"></i>
+            </div>
+            <div class="col-md-4">
+                <h1><span>{{ contribution.count }} + </span></h1>
+                <h3>Total Events</h3>
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+            </div>
+            <div class="col-md-4">
+                <h1><span>{{ contributors.count }} + </span></h1>
+                <h3>Total Contributors</h3>
+                <i class="fa fa-money"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="space" style="height: 140px"></div>
+<section class="portfolio-sec">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="section-title color" style="text-align: center">
+                    <span>portfolio</span>
+                    <h1>Latest portfolio</h1>
+                </div>
+            </div>
+            <div class="space" style="height: 130px"></div>
+            <div class="container-fluid" style="padding: 0; overflow: hidden;">
+                <div class="portfolio">
+                    <div class="portfolio-item">
+                        <img src="{% static 'images/p-1.jpeg' %}" alt="images" /> <span>Digital Marketing</span>
+                        <a href="#">
+                            <h5>Digital Marketing</h5>
+                        </a>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="{% static 'images/p-2.jpg' %}" alt="images" /> <span>Design</span>
+                        <a href="#">
+                            <h5>Landing Page</h5>
+                        </a>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="{% static 'images/p-3.jpeg' %}" alt="images" /> <span>Web Development</span>
+                        <a href="#">
+                            <h5>Web Development</h5>
+                        </a>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="{% static 'images/p-4.jpeg' %}" alt="image" /> <span>Digital Marketing</span>
+                        <a href="#">
+                            <h5>Graphic Design</h5>
+                        </a>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="{% static 'images/p-3.jpeg' %}" alt="image" /> <span>Design</span>
+                        <a href="#">
+                            <h5>SEO Marketing</h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="testimonial-sec">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="section-title color" style="text-align: center">
+                    <span>feedback</span>
+                    <h1>What client says</h1>
+                </div>
+            </div>
+            <div class="testimonials">
+                <div class="testimonial-item">
+                    <img class="testi-quote" src="{% static 'images/quote.png' %}" alt="img">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <img src="{% static 'images/b.jpg' %}" alt="Logo">
+                        </div>
+                        <div class="col-sm-5">
+                            <h5>Ibrahim emran</h5>
+                            <span>CEO of Felipa</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <img class="testi-quote" src="{% static 'images/quote.png' %}" alt="img">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <img src="{% static 'images/c.png' %}" alt="Logo">
+                        </div>
+                        <div class="col-sm-5">
+                            <h5>Ibrahim emran</h5>
+                            <span>CEO of BongoBeyond</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <img class="testi-quote" src="{% static 'images/quote.png' %}" alt="img">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <img src="{% static 'images/a.jpg' %}" alt="Logo">
+                        </div>
+                        <div class="col-sm-5">
+                            <h5>Ibrahim emran</h5>
+                            <span>CEO of Felipa</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="team-sec">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="section-title color" style="text-align: center">
+                    <span>Team</span>
+                    <h1>Our dedicated member</h1>
+                </div>
+            </div>
+            <div class="space" style="height: 130px"></div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="team animate-bottom">
+                    <img src="{% static 'images/3.jpg' %}" alt="img">
+                    <div class="team-content">
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><a href="#"><i class="fa-fw fa fa-facebook"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa-fw fa fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa-fw fa fa-linkedin"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa-fw fa fa-dribbble"></i></a></li>
+                        </ul>
+                    </div>
+                    <h5>Ibrahim imran</h5>
+                    <span>Company Director</span>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="space" style="height: 40px"></div>
+                <div class="team animate-top">
+                    <img src="{% static 'images/team1.png' %}" alt="img">
+                    <div class="team-content">
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><a href="#"><i class="fa-fw fa fa-facebook"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa-fw fa fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa-fw fa fa-linkedin"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa-fw fa fa-dribbble"></i></a></li>
+                        </ul>
+                    </div>
+                    <h5>Pabby mojumdar</h5>
+                    <span>CEO of BB</span>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="team animate-bottom">
+                    <img src="{% static 'images/team2.png' %}" alt="img">
+                    <div class="team-content">
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><a href="#"><i class="fa-fw fa fa-facebook"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa-fw fa fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa-fw fa fa-linkedin"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa-fw fa fa-dribbble"></i></a></li>
+                        </ul>
+                    </div>
+                    <h5>Halarpo mamun</h5>
+                    <span>UI/UX designer</span>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="space" style="height: 40px"></div>
+                <div class="team animate-top">
+                    <img src="{% static 'images/team3.png' %}" alt="img">
+                    <div class="team-content">
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><a href="#"><i class="fa-fw fa fa-facebook"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa-fw fa fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa-fw fa fa-linkedin"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa-fw fa fa-dribbble"></i></a></li>
+                        </ul>
+                    </div>
+                    <h5>Moynar maa</h5>
+                    <span>Mananger</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="blog-sec">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-12">
+                <div class="section-title color" style="text-align: center">
+                    <span>Blog</span>
+                    <h1>Latest News</h1>
+                </div>
+            </div>
+            <div class="space" style="height: 130px"></div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="blog-item">
+                    <div class="blog-item-img">
+                        <img class="img-fluid" src="{% static 'images/h-n-1.jpeg' %}"
+                            alt="A friend is someone who knows all about you and still loves you.">
+                    </div>
+                    <div class="blog-item-content">
+                        <p class="front-date">27 Jan 2019</p>
+                        <a href="single.html">
+                            <h5>A friend is someone who knows all about...</h5>
+                        </a>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
+                        <a class="blog-btn" href="single.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="blog-item">
+                    <div class="blog-item-img">
+                        <img class="img-fluid" src="{% static 'images/h-n-2.jpeg' %}"
+                            alt="A friend is someone who knows all about you and still loves you.">
+                    </div>
+                    <div class="blog-item-content">
+                        <p class="front-date">27 Jan 2019</p>
+                        <a href="single.html">
+                            <h5>Ten Secrets You Will Not Want To Know</h5>
+                        </a>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
+                        <a class="blog-btn" href="single.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="blog-item">
+                    <div class="blog-item-img">
+                        <img class="img-fluid" src="{% static 'images/h-n-3.jpeg' %}"
+                            alt="A friend is someone who knows all about you and still loves you.">
+                    </div>
+                    <div class="blog-item-content">
+                        <p class="front-date">27 Jan 2019</p>
+                        <a href="single.html">
+                            <h5>The Shocking Revelation of Portfolio</h5>
+                        </a>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
+                        <a class="blog-btn" href="single.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container">
+    <div class="row text-center">
+        <div class="col">
+            <img class="client" src="{% static 'images/client-1.png' %}" alt="img">
+        </div>
+        <div class="col">
+            <img class="client" src="{% static 'images/client-2.png' %}" alt="img">
+        </div>
+        <div class="col">
+            <img class="client" src="{% static 'images/client-3.png' %}" alt="img">
+        </div>
+        <div class="col">
+            <img class="client" src="{% static 'images/client-4.png' %}" alt="img">
+        </div>
+        <div class="col">
+            <img class="client" src="{% static 'images/client-5.png' %}" alt="img">
+        </div>
+    </div>
+</div>
+
+<div class="space" style="height: 100px"></div>
+
+<section class="gradient-bg">
+    <div class="space" style="height: 53px"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Do You Love What You See?</h2>
+            </div>
+            <div class="col-md-6 cta-btn">
+                <div class="bnr-btn">
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="#">Buy It Now</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="space" style="height: 40px"></div>
+</section>
+
+<footer>
+    <div class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div id="text-8" class="col-sm-6 col-xl-4 footer-widget">
+                    <div class="textwidget">
+                        <p><img class="img-fluid" width="135" height="auto" src="{% static 'images/logo-white.png' %}"
+                                alt="img"></p>
+                        <p>Lorem ipsum dolor sit amet, cons ec te tur adipiscing elit, sed do eiu s mod tempor magna.
+                        </p>
+                        <div class="footer-social">
+                            <ul class="list-inline">
+                                <li class="list-inline-item"><a href="#"><i class="fa-fw fa fa-facebook"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fa-fw fa fa-twitter"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fa-fw fa fa-dribbble"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fa-fw fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="nav_menu-4" class="col-sm-6 col-xl-2 footer-widget">
+                    <h3 class="widget-title">Quick links</h3>
+                    <div class="menu-usefull-link-container">
+                        <ul id="menu-usefull-link" class="menu">
+                            <li class="menu-item"><a href="#">Digital marketing</a></li>
+                            <li class="menu-item"><a href="#">Search engine</a></li>
+                            <li class="menu-item"><a href="#">Optimization</a></li>
+                            <li class="menu-item"><a href="#">Pay per click</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="nav_menu-5" class="col-sm-6 col-xl-2 footer-widget">
+                    <h3 class="widget-title">Services</h3>
+                    <div class="menu-service-container">
+                        <ul id="menu-service" class="menu">
+                            <li class="menu-item"><a href="#">Digital marketing</a></li>
+                            <li class="menu-item"><a href="#">pay per click</a></li>
+                            <li class="menu-item"><a href="#">Lorem dummy</a></li>
+                            <li class="menu-item"><a href="#">Socaial media</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-4 footer-widget">
+                    <h3 class="widget-title">Subscribe newslatter</h3>
+                    <form class="mc4wp-form" method="POST">
+                        {% csrf_token %}
+                        <div class="mc4wp-form-fields">
+                            <input type="email" name="email" placeholder="Your email address">
+                            <br>
+                            <!-- <input type="submit" method="POST" value="Sign up"> -->
+                            <button class="btn btn-success" >Contact Us</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <p>
+            Copyright © 2019 felipa All Rights Reserved. </p>
+    </div>
+</footer>
+{% endblock content %}
